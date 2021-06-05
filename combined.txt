@@ -1,0 +1,310 @@
+"""10. Try with single except: WAP which will take two integer numbers as input and perform division of them.
+	- User of this program is not smart and can input anything as part of input
+	- Handle ArithmaticError, ZeroDivisionError and ValueError
+	- Print exception information"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+
+except (ArithmeticError, ZeroDivisionError, ValueError):
+    print("Error has occured")
+
+"""Output
+6
+3
+2
+""""""11. Try with default except block: WAP which will take two integer numbers as input and perform division of them.
+	- User of this program is not smart and can input anything as part of input
+	- Handle ZeroDivisionError and rest all should be catched in default block
+	- Print exception information"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+
+except (ZeroDivisionError):
+    print("Division by zero")
+
+except(ArithmeticError, ValueError):
+    print("Exeception occured")
+
+"""Output
+4
+0
+Division by zero"""#12. Write not one finally block
+
+"""The finally block is still executed but the program terminates and does not execute the program after the finally
+ block. Typically the finally clause is the ideal place for cleaning up the operations in a process. For example
+  closing a file irrespective of the errors in read/write operations.""""""13. WAP program using Que 8.
+   - At the end of the program print "Program completed successfully" using finally block"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+except ValueError as e:
+    print("Value not provided")
+
+except:
+    print("Division by zero")
+
+finally:
+    print("Program completed successfully")
+
+"""Output
+10
+5
+2
+Program completed successfully""""""14. WAP program using Que 9.
+   - At the end of the program print "Program completed successfully" using finally block"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+except ValueError as e:
+    print("Value not provided")
+
+except ArithmeticError as e:
+    print("Arithmetic error")
+
+except:
+    print("Division by zero")
+
+finally:
+    print("Program completed successfully")
+
+"""Output
+10
+5
+2
+Program completed successfully""""""15. WAP program using Que 10.
+   - At the end of the program print "Program completed successfully" using finally block"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+
+except (ArithmeticError, ZeroDivisionError, ValueError):
+    print("Error has occured")
+
+finally:
+    print("Program completed successfully")
+
+"""Output
+10
+5
+2
+Program completed successfully""""""16. WAP program using Que 11.
+   - At the end of the program print "Program completed successfully" using finally block"""
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+
+except (ZeroDivisionError):
+    print("Division by zero")
+
+except(ArithmeticError, ValueError):
+    print("Exeception occured")
+
+finally:
+    print("Program completed successfully")
+
+"""Output
+10
+5
+2
+Program completed successfully""""""17. WAP to handle ArithmaticError in outer try except block and ZeroDivisionError in inner try except bolck. Use finally to print the "Program completed successfully"  message.
+"""
+try:
+    a=int(input())
+    b=int(input())
+    try:
+        print(a//b)
+    except(ZeroDivisionError):
+        print("Zero division error")
+except(ArithmeticError):
+    print("Arithmetic Error")
+
+"""Output
+10
+0
+Zero division error"""
+"""18. Code :
+try:
+	stmt_1
+	stmt_2
+	stmt_3
+	try:
+		stmt_4
+		stmt_5
+		stmt_6
+	except X:
+		stmt_7
+	finally:
+		stmt_8
+except Y:
+	stmt_9
+finally:
+	stmt_10
+
+What will happen if code breaks at stmt_1
+What will happen if code breaks at stmt_2
+What will happen if code breaks at stmt_3
+What will happen if code breaks at stmt_4
+What will happen if code breaks at stmt_5
+What will happen if code breaks at stmt_6
+What will happen if code breaks at stmt_7
+What will happen if code breaks at stmt_8
+What will happen if code breaks at stmt_9
+What will happen if code breaks at stmt_10"""
+
+"""If code breaks at stmt 1,2 or 3 then stmt 9 will be executed. If the code breaks at 4,5,6 then stmt 7 will be
+executed. If the code breaks at 7 then stmt 8 will be executed and if it breaks at stmt 9 then stmt 10 will be executed.
+"""
+#19. Note on else block with try except finally
+
+"""In the try clause, all statements are executed until an exception is encountered. except is used to catch and
+handle the exception(s) that are encountered in the try clause. else lets you code sections that should run only
+when no exceptions are encountered in the try clause."""#2. Write note on Exceptions
+
+"""An exception (short for "exceptional event") is an error or unexpected event that happens while a program is
+ running. When an exception occurs, it interrupts the flow of the program. If the program can handle and process
+ the exception, it may continue running.""""""20. Types of exceptions :
+	- Predefined exception
+	- User defined functions """
+
+"""
+The built-in exceptions can be generated by the interpreter or built-in functions. These exceptions are predefined
+in the program and can be used by the user
+
+Programmers may name their own exceptions by creating a new exception class. Exceptions need to be derived from 
+the Exception class, either directly or indirectly. Although not mandatory, most of the exceptions are named as 
+names that end in “Error” similar to naming of the standard exceptions in python.""""""21. Create class as AccountHolder with attributes as name, age, bank account balance and withrawal request amount.
+Create the user defined exception to handle
+		- Throw InvalidNameError if account holder name contains number
+		- Throw TooYoung or TooOld exception if account holder age is below 18 or more that 58
+		- Throw InsufficientFundsException if account balanceis less that withrawal request amount
+"""
+
+class AccountHolder:
+    def __init__(self,name,age,balance,withdrawl):
+        self.name=name
+        self.age=age
+        self.balance=balance
+        self.withdrawl=withdrawl
+    def disp(self):
+        try:
+            print("Account created")
+        except(self.name.isdigit()):
+            raise ("Name")
+            print("Name contains number")
+        except(self.age<18 or self.age>58):
+            raise ("Age")
+            print("Invalid age")
+        except(self.balance<self.withdrawl):
+            raise ("Balance")
+            print("Invalid Amount")
+
+obj1=AccountHolder('Ankit',2,10,1000)
+obj1.disp()
+#3. Write pythons exceptions hierarchy
+
+"""The Python exception class hierarchy consists of a few dozen different exceptions spread across a handful of
+important base class types. As with most programming languages, errors occur within a Python application when
+something unexpected goes wrong. Hierarchy is as follows:
+ArithmeticError. FloatingPointError. OverflowError. ZeroDivisionError.
+AssertionError.
+AttributeError.
+BufferError.
+EOFError.
+ImportError. ModuleNotFoundError.
+LookupError. IndexError. KeyError.
+MemoryError."""#4. What isdefault exception handling provided in pythons
+
+"""In Python, exceptions can be handled using a try statement. The critical operation which can raise an exception
+is placed inside the try clause. The code that handles the exceptions is written in the except clause. We can thus
+choose what operations to perform once we have caught the exception."""#5. WAP which takes two arguments as input. Perform division of two numbers. Handle the error/exception if divider is 0.
+
+try:
+    a = int(input("Enter a:"))
+    b = int(input("Enter b:"))
+    c = a/b
+    print(c)
+except:
+    print("Can't divide with zero")
+
+"""Output
+Enter a:4
+Enter b:2
+2.0""""""6. What will be the output for below code
+
+try:
+	print(a/b) 	// Stmt 1
+	print(a/c)	// Stmt 2
+	print(a/d)	// Stmt 3
+except ZeroDivisionError:
+	print("DIvider is zero")
+
+	- What will happen if program breats at Stmt 1
+	- What will happen if program breats at Stmt 2
+	- What will happen if program breats at Stmt 3"""
+
+#7. Using Que 6 details, WAP to print the exception information
+
+try:
+    a=int(Input())
+    b=int(input())
+    print(a/b)
+except:
+    print("Division by zero")"""8. Try with multiple except: WAP which will take two integer numbers as input and perform division of them.
+	- User of this program is not smart and can input anything as part of input
+	- Handle ZeroDivisionError and ValueError
+	- Print exception information"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+except ValueError as e:
+    print("Value not provided")
+
+except:
+    print("Division by zero")
+
+
+"""Output
+4
+8
+0"""
+"""9. Try with multiple except: WAP which will take two integer numbers as input and perform division of them.
+	- User of this program is not smart and can input anything as part of input
+	- Handle ArithmaticError, ZeroDivisionError and ValueError
+	- Print exception information"""
+
+try:
+    a=int(input())
+    b=int(input())
+    print(a//b)
+except ValueError as e:
+    print("Value not provided")
+
+except ArithmeticError as e:
+    print("Arithmetic error")
+
+except:
+    print("Division by zero")
+
+"""Output
+6
+3
+2"""#1. Write note on syntax errors and runtime errors
+
+"""A program with a syntax error cannot be executed. The program with a runtime error can be executed but dumps
+under certain conditions. ... Syntax errors are static error that can be detected by the compiler. Runtime errors
+are dynamic error that cannot be detected by the compiler"""
